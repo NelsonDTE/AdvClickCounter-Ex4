@@ -1,33 +1,48 @@
 package es.ulpgc.eite.cleancode.advclickcounter.clicks;
 
+import android.util.Log;
+
+
+import es.ulpgc.eite.cleancode.advclickcounter.data.CounterData;
+
+
 public class ClickListModel implements ClickListContract.Model {
 
   public static String TAG = ClickListModel.class.getSimpleName();
 
-  private String data;
 
-  public ClickListModel(String data) {
-    this.data = data;
-  }
+
+  private CounterData data;
+  private Integer values;
+
+
 
   @Override
-  public String getStoredData() {
+  public CounterData getStoredData() {
     // Log.e(TAG, "getStoredData()");
     return data;
   }
 
+
   @Override
-  public void onRestartScreen(String data) {
-    // Log.e(TAG, "onRestartScreen()");
+  public void onDataFromNextScreen(CounterData data, Integer values) {
+    this.data = data;
+    this.values = values;
+
+
   }
 
   @Override
-  public void onDataFromNextScreen(String data) {
-    // Log.e(TAG, "onDataFromNextScreen()");
+  public void onRestartScreen(CounterData data, Integer values) {
+
+    this.data = data;
+    this.values = values;
   }
 
   @Override
-  public void onDataFromPreviousScreen(String data) {
-    // Log.e(TAG, "onDataFromPreviousScreen()");
+  public void onDataFromPreviousScreen(CounterData data , Integer values) {
+    this.data = data;
+    this.values = values;
+
   }
 }

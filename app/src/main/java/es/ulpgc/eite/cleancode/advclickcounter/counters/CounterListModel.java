@@ -1,10 +1,17 @@
 package es.ulpgc.eite.cleancode.advclickcounter.counters;
 
+import java.util.List;
+
+import es.ulpgc.eite.cleancode.advclickcounter.data.CounterData;
+
 public class CounterListModel implements CounterListContract.Model {
 
   public static String TAG = CounterListModel.class.getSimpleName();
 
-  private String data;
+
+  private List<CounterData> data;
+  private Integer values;
+  private Long id;
 
   public CounterListModel(String data) {
     this.data = data;
