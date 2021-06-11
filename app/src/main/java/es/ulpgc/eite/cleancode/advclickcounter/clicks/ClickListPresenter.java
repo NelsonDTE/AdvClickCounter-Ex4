@@ -1,5 +1,7 @@
 package es.ulpgc.eite.cleancode.advclickcounter.clicks;
 
+import android.util.Log;
+
 import java.lang.ref.WeakReference;
 
 import es.ulpgc.eite.cleancode.advclickcounter.app.AppMediator;
@@ -34,16 +36,16 @@ public class ClickListPresenter implements ClickListContract.Presenter {
     if (savedState != null) {
 
       // update the model if is necessary
-      model.onDataFromPreviousScreen(savedState.data);
+      model.onDataFromPreviousScreen(savedState.data, savedState.);
     }
   }
 
   @Override
   public void onRestart() {
-    // Log.e(TAG, "onRestart()");
+    Log.e(TAG, "onRestart()");
 
     // update the model if is necessary
-    model.onRestartScreen(state.data);
+    model.onRestartScreen(state.data, state.values);
   }
 
   @Override

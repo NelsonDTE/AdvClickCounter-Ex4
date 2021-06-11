@@ -31,9 +31,9 @@ public interface CounterListContract {
   interface Model {
     Integer getStoredData();
 
-    void onDataFromNextScreen(CounterData data, Integer number);
-    void onRestartScreen(List<CounterData> datasource, Integer index, Integer number);
-    void onDataFromPreviousScreen(CounterData data, Integer number);
+    void onDataFromNextScreen(CounterData data, Integer values);
+    void onRestartScreen(List<CounterData> data, Integer values);
+    void onDataFromPreviousScreen(CounterData data, Integer values);
   }
 
 }

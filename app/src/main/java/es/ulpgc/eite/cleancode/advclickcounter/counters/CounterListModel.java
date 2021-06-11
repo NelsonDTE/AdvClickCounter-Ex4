@@ -1,5 +1,8 @@
 package es.ulpgc.eite.cleancode.advclickcounter.counters;
 
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import es.ulpgc.eite.cleancode.advclickcounter.data.CounterData;
@@ -11,30 +14,43 @@ public class CounterListModel implements CounterListContract.Model {
 
   private List<CounterData> data;
   private Integer values;
-  private Long id;
 
-  public CounterListModel(String data) {
-    this.data = data;
+
+  public CounterListModel() {
+    data= new ArrayList<>();
+    values=0;
+
   }
 
   @Override
-  public String getStoredData() {
+  public Integer getStoredData() {
     // Log.e(TAG, "getStoredData()");
-    return data;
+    return values;
   }
 
   @Override
-  public void onRestartScreen(String data) {
+  public void onRestartScreen(List<CounterData> data, Integer values) {
     // Log.e(TAG, "onRestartScreen()");
+    this.data = data;
+    this.values = values;
+
   }
 
   @Override
-  public void onDataFromNextScreen(String data) {
+  public void onDataFromNextScreen(CounterData data, Integer values) {
     // Log.e(TAG, "onDataFromNextScreen()");
+    Log.e(TAG, "data: "+data);
+
+    this.values=values;
+    data.set(data.indexOf(data), data);
   }
 
   @Override
-  public void onDataFromPreviousScreen(String data) {
+  public void onDataFromPreviousScreen(CounterData data, Integer values) {
     // Log.e(TAG, "onDataFromPreviousScreen()");
+    Log.e(TAG, "data: "+data);
+
+    this.values=values;
+    data.set(data.indexOf(data), data);
   }
 }
